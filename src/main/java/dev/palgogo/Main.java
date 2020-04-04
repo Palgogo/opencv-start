@@ -1,11 +1,12 @@
 package dev.palgogo;
 
 import dev.palgogo.chapter3.Chapter3;
-import org.opencv.core.Core;
+
+import java.nio.file.Paths;
 
 public class Main {
     static {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        System.load(Paths.get(".").toAbsolutePath().normalize().toString() + "\\libs\\opencv_java420.dll");
     }
 
     public static void main(String[] args) {
