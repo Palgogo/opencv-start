@@ -1,4 +1,4 @@
-package dev.palgogo.chapter2;
+package main.dev.palgogo.chapter2;
 
 import org.opencv.core.*;
 import org.opencv.utils.Converters;

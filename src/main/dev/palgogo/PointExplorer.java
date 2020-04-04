@@ -1,4 +1,4 @@
-package dev.palgogo;
+package main.dev.palgogo;
 
 import org.opencv.core.Point;
 import org.opencv.core.Rect;

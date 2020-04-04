@@ -1,6 +1,6 @@
-package dev.palgogo;
+package main.dev.palgogo;
 
-import dev.palgogo.chapter3.Chapter3;
+import main.dev.palgogo.chapter3.Chapter3;
 import org.opencv.core.Core;
 
 public class Main {
