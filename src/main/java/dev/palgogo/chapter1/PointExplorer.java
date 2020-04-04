@@ -1,4 +1,4 @@
-package main.java.dev.palgogo.chapter1;
+package dev.palgogo.chapter1;
 
 import org.opencv.core.Point;
 import org.opencv.core.Rect;

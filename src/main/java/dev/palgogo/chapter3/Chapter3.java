@@ -1,4 +1,4 @@
-package main.java.dev.palgogo.chapter3;
+package dev.palgogo.chapter3;
 
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;

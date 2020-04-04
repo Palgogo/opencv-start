@@ -5,3 +5,6 @@
 build
 /.idea/
 /out/production/opencv-start/
+*.ipr
+*.iws
+*.iml
