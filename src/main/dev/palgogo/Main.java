@@ -13,3 +13,6 @@ public class Main {
     }
 
 }
+
+//TODO add openCV library to gradle properties
+//TODO add dependencies for running from gradle
