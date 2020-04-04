@@ -29,7 +29,7 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'opencv.start.App'
+mainClassName = 'dev.palgogo.Main'
 
 test {
     // Use TestNG for unit tests
