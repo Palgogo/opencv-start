@@ -49,6 +49,13 @@ application {
     mainClassName = 'dev.palgogo.Main'
 }
 
+idea{
+    module{
+        dounloadJavadoc = true
+        dounloadSourcesw = true
+    }
+}
+
 test {
     // Use TestNG for unit tests
     useTestNG()
