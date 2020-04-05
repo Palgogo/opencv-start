@@ -4,7 +4,7 @@
 # Ignore Gradle build output directory
 build
 /.idea/
-/out/production/opencv-start/
 *.ipr
 *.iws
 *.iml
+/out/
