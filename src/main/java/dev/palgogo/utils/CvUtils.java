@@ -3,6 +3,7 @@ package dev.palgogo.utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.*;
@@ -155,5 +156,27 @@ public class CvUtils {
             e.printStackTrace();
         }
         return new Mat();
+    }
+
+    public static void showImage(Mat img, String title) {
+        BufferedImage im = matToBufferedImage(img);
+        if (im == null) return;
+
+        int w = 1000, h = 600;
+        JFrame window = new JFrame(title);
+        window.setSize(w, h);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        ImageIcon imageIcon = new ImageIcon(im);
+        JLabel label = new JLabel(imageIcon);
+
+        JScrollPane pane = new JScrollPane(label);
+        window.setContentPane(pane);
+
+        if (im.getWidth() < w && im.getHeight() < h) {
+            window.pack();
+        }
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
     }
 }
