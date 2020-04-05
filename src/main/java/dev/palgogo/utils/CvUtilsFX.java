@@ -21,7 +21,8 @@ public class CvUtilsFX {
 
     public static WritableImage matToImageFX(Mat m) {
         if (m == null || m.empty()) return null;
-        if (m.depth() == CvType.CV_16U) {
+        if (m.depth() == CvType.CV_8U) {
+        } else if (m.depth() == CvType.CV_16U) {
             Mat m_16 = new Mat();
             m.convertTo(m_16, CvType.CV_8U, 255.0 / 65535);
             m = m_16;
@@ -49,7 +50,7 @@ public class CvUtilsFX {
         WritableImage wim = new WritableImage(m.cols(), m.rows());
         PixelWriter pw = wim.getPixelWriter();
         pw.setPixels(0, 0, m.cols(), m.rows(),
-                WritablePixelFormat.getByteBgraPreInstance(),
+                WritablePixelFormat.getByteBgraInstance(),
                 buf, 0, m.cols() * 4);
 
         return wim;
