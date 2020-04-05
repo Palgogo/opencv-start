@@ -2,10 +2,14 @@ package dev.palgogo.chapter3;
 
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.MatOfInt;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -46,5 +50,23 @@ public class FromMatToArrayAndReturn {
         System.out.println(mat.dump());
 
         Assert.assertTrue(mat.dump().contains("3"));
+    }
+
+    @Test
+    public void imageFromFileToBuffer() {
+        Path path = Paths.get("src", "test", "resources", "photos", "meXS.jpg");
+        Path fullResourcePath = path.toAbsolutePath();
+        Mat img = Imgcodecs.imread(fullResourcePath.toString());
+        if (img.empty()) {
+            System.out.println("can't load an image");
+        }
+
+        MatOfByte buf = new MatOfByte();
+        boolean st = Imgcodecs.imencode(".jpg", img, buf, new MatOfInt(Imgcodecs.IMWRITE_JPEG_QUALITY, 100));
+        if (!st) {
+            System.out.println("can't load an image to buffer");
+        }
+
+        System.out.println("buf size is " + buf.size().height);
     }
 }
