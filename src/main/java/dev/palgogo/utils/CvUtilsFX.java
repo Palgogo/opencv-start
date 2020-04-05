@@ -7,10 +7,7 @@ import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 public class CvUtilsFX {
     public static WritableImage matToWritableImage(Mat m) {
@@ -103,5 +100,45 @@ public class CvUtilsFX {
             return false;
         }
         return true;
+    }
+
+    public static Mat loadMat(String path) {
+        if (path == null || path.length() < 5 || !path.endsWith(".mat"))
+            return new Mat();
+        File f = new File(path);
+        if (!f.exists() || !f.isFile()) return new Mat();
+        try (
+                InputStream in = new FileInputStream(path);
+                BufferedInputStream bin = new BufferedInputStream(in);
+                DataInputStream din = new DataInputStream(bin);
+        ) {
+            int rows = din.readInt();
+            if (rows < 1) return new Mat();
+
+            int cols = din.readInt();
+            if (cols < 1) return new Mat();
+
+            int ch = din.readInt();
+            int type = 0;
+            if (ch == 1) {
+                type = CvType.CV_8UC1;
+            } else if (ch == 3) {
+                type = CvType.CV_8UC3;
+            } else if (ch == 4) {
+                type = CvType.CV_8UC4;
+            } else return new Mat();
+
+            int size = ch * cols * rows;
+            byte[] buf = new byte[size];
+            int rsize = din.read(buf);
+            if (size != rsize) return new Mat();
+            Mat m = new Mat(rows, cols, type);
+            m.put(0, 0, buf);
+
+            return m;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Mat();
     }
 }
