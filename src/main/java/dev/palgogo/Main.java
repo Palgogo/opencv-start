@@ -13,4 +13,5 @@ public class Main {
         new Chapter3().imgLoadingAndWriting();
     }
 
+    //TODO load lybrary in the run proccess search how
 }
