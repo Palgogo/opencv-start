@@ -5,6 +5,7 @@ import org.opencv.core.Mat;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.util.Arrays;
 
 public class CvUtils {
 
@@ -47,5 +48,36 @@ public class CvUtils {
         byte[] data = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
         System.arraycopy(buf, 0, data, 0, buf.length);
         return image;
+    }
+
+    public static Mat bufferedImageToMat(BufferedImage img) {
+        if (img == null) return new Mat();
+        int type = 0;
+        if (img.getType() == BufferedImage.TYPE_BYTE_GRAY) {
+            type = CvType.CV_8UC1;
+        } else if (img.getType() == BufferedImage.TYPE_3BYTE_BGR) {
+            type = CvType.CV_8UC3;
+        } else if (img.getType() == BufferedImage.TYPE_4BYTE_ABGR) {
+            type = CvType.CV_8UC4;
+        } else return new Mat();
+
+        Mat m = new Mat(img.getHeight(), img.getWidth(), type);
+        byte[] data = ((DataBufferByte) img.getRaster().getDataBuffer()).getData();
+        if (type == CvType.CV_8UC3 || type == CvType.CV_8UC1) {
+            m.put(0, 0, data);
+            return m;
+        }
+
+        byte[] buf = Arrays.copyOf(data, data.length);
+        byte tmp = 0;
+        for (int i = 0; i < buf.length; i += 4) { //ABGR => BGRA
+            tmp = buf[i];
+            buf[i] = buf[i + 1];
+            buf[i + 1] = buf[i + 2];
+            buf[i + 2] = buf[i + 3];
+            buf[i + 3] = tmp;
+        }
+        m.put(0, 0, buf);
+        return m;
     }
 }
