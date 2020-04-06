@@ -1,6 +1,6 @@
 package dev.palgogo;
 
-import dev.palgogo.chapter8.FindingObjects;
+import dev.palgogo.chapter7.FilterApplying;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -41,7 +41,7 @@ public class Main extends Application {
     }
 
     private void onClickButton(ActionEvent event) {
-        new FindingObjects().findAndDrawContour();
+        new FilterApplying().medianBlurApplying();
     }
 
     //todo add seting path to image

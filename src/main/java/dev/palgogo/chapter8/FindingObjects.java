@@ -51,7 +51,7 @@ public class FindingObjects {
     }
 
     public void findAndDrawContour() {
-        Path path = Paths.get("src", "test", "resources", "photos", "meXS.jpg");
+        Path path = Paths.get("src", "test", "resources", "photos", "house.png");
         Path fullResourcePath = path.toAbsolutePath();
         Mat img = Imgcodecs.imread(fullResourcePath.toString());
         if (img.empty()) {
@@ -74,7 +74,7 @@ public class FindingObjects {
         System.out.println(hierarchy.dump());
 
         Imgproc.drawContours(img, contours, -1, CvUtils.COLOR_WHITE);
-        CvUtils.showImage(img, "drawContours");
+        CvUtilsFX.showImage(img, "drawContours");
         img.release();
         imgGray.release();
         edges.release();
