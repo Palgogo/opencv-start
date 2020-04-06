@@ -1,6 +1,6 @@
 package dev.palgogo;
 
-import dev.palgogo.utils.CvUtilsFX;
+import dev.palgogo.chapter8.FindingObjects;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,10 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main extends Application {
@@ -44,18 +41,7 @@ public class Main extends Application {
     }
 
     private void onClickButton(ActionEvent event) {
-        Path path = Paths.get("src", "test", "resources", "photos", "meXS.jpg");
-        Path fullResourcePath = path.toAbsolutePath();
-        //Load image from file
-        Mat img = Imgcodecs.imread(/*path to image*/fullResourcePath.toString());
-
-        if (img.empty()) {
-            System.out.println("can't load an image");
-            return;
-        }
-        //process image
-        //show in separate window
-        CvUtilsFX.showImage(img, "cool image");
+        new FindingObjects().findAndDrawContour();
     }
 
     //todo add seting path to image

@@ -5,14 +5,24 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 import java.awt.image.BufferedImage;
 
 public class CvUtilsFX {
+
+    public static Scalar colorRGB(Color c) {
+        return new Scalar((double) Math.round(c.getBlue() * 255),
+                (double) Math.round(c.getGreen() * 255),
+                (double) Math.round(c.getRed() * 255),
+                (double) Math.round(c.getOpacity() * 255));
+    }
+
     public static WritableImage matToWritableImage(Mat m) {
         BufferedImage bim = CvUtils.matToBufferedImage(m);
         if (bim == null) return null;

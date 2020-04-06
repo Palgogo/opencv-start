@@ -2,14 +2,43 @@ package dev.palgogo.utils;
 
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.*;
 import java.util.Arrays;
 
 public class CvUtils {
+
+    public static final Scalar COLOR_BLACK = colorRGB(0, 0, 0);
+    public static final Scalar COLOR_WHITE = colorRGB(255, 255, 255);
+    public static final Scalar COLOR_RED = colorRGB(255, 0, 0);
+    public static final Scalar COLOR_BLUE = colorRGB(0, 0, 255);
+    public static final Scalar COLOR_GREEN = colorRGB(0, 128, 0);
+    public static final Scalar COLOR_YELLOW = colorRGB(255, 255, 0);
+    public static final Scalar COLOR_GRAY = colorRGB(128, 128, 128);
+
+    public static Scalar colorRGB(double red, double green, double blue) {
+        return new Scalar(blue, green, red);
+    }
+
+    public static Scalar colorRGB(Color color) {
+        return new Scalar(color.getBlue(), color.getGreen(), color.getGreen());
+    }
+
+    public static Scalar colorRGBA(double red, double green, double blue, double alpha) {
+        return new Scalar(blue, green, red, alpha);
+    }
+
+    public static Scalar colorRGBA(Color c) {
+        return new Scalar(c.getBlue(), c.getGreen(),
+                c.getRed(), c.getAlpha());
+    }
 
     public static BufferedImage matToBufferedImage(Mat m) {
         if (m == null || m.empty()) return null;
@@ -166,6 +195,12 @@ public class CvUtils {
         JFrame window = new JFrame(title);
         window.setSize(w, h);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                window.dispose();
+            }
+        });
 
         ImageIcon imageIcon = new ImageIcon(im);
         JLabel label = new JLabel(imageIcon);
@@ -178,5 +213,6 @@ public class CvUtils {
         }
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
     }
 }
