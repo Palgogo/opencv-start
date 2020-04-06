@@ -26,4 +26,6 @@ public class Chapter3 {
             System.out.println("Can't save an image");
         }
     }
+
+
 }

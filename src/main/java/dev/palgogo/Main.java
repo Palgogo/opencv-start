@@ -58,5 +58,7 @@ public class Main extends Application {
         CvUtilsFX.showImage(img, "cool image");
     }
 
+    //todo add seting path to image
+
     //TODO load lybrary in the run proccess search how
 }
