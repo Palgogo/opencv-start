@@ -2,6 +2,7 @@ package dev.palgogo;
 
 import dev.palgogo.chapter10.CornerDetection;
 import dev.palgogo.labs.First;
+import dev.palgogo.labs.Third;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -83,7 +84,7 @@ public class Main extends Application {
     }
 
     private void onThirdLabClickButton(ActionEvent event) {
-
+        new Third().applyFilters();
     }
 
     private void onFourthLabClickButton(ActionEvent event) {
