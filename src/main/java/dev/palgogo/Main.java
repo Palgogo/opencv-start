@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import org.opencv.core.Core;
 
 import java.nio.file.Paths;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Main extends Application {
@@ -48,7 +47,6 @@ public class Main extends Application {
     }
 
     public List<Button> getLabButtons() {
-        List<Button> buttons = new LinkedList<>();
 
         Button firstLabButton = new Button("1 lab");
         Button secondLabButton = new Button("2 lab");
@@ -68,16 +66,10 @@ public class Main extends Application {
         seventhLabButton.setOnAction(this::onSeventhLabClickButton);
         eighthLabButton.setOnAction(this::onEighthLabClickButton);
 
-        buttons.add(firstLabButton);
-        buttons.add(secondLabButton);
-        buttons.add(thirdLabButton);
-        buttons.add(fourthLabButton);
-        buttons.add(fifthLabButton);
-        buttons.add(sixthLabButton);
-        buttons.add(seventhLabButton);
-        buttons.add(eighthLabButton);
-
-        return buttons;
+        return List.of(firstLabButton, secondLabButton,
+                thirdLabButton, fourthLabButton,
+                fifthLabButton, sixthLabButton,
+                seventhLabButton, eighthLabButton);
     }
 
 
