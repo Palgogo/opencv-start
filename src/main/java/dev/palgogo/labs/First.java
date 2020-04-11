@@ -20,23 +20,25 @@ public class First {
             System.out.println("Can't load an image");
             return;
         }
+
         Mat imgGray = new Mat();
         Imgproc.cvtColor(img, imgGray, Imgproc.COLOR_BGR2GRAY);
+        CvUtilsFX.showImage(img, "original image");
+
         Mat edges = new Mat();
         Imgproc.Canny(imgGray, edges, 100, 200);
         CvUtilsFX.showImage(edges, "Canny");
+
         Mat edgesCopy = edges.clone(); //create Copy
         ArrayList<MatOfPoint> contours = new ArrayList<>();
         Mat hierarchy = new Mat();
         Imgproc.findContours(edgesCopy, contours, hierarchy,
                 Imgproc.RETR_TREE,
                 Imgproc.CHAIN_APPROX_SIMPLE);
-        System.out.println(contours.size());
-        System.out.println(hierarchy.size());
-        System.out.println(hierarchy.dump());
 
         Imgproc.drawContours(img, contours, -1, CvUtils.COLOR_WHITE);
-        CvUtils.showImage(img, "drawContours");
+        CvUtilsFX.showImage(img, "drawContours");
+
         img.release();
         imgGray.release();
         edges.release();

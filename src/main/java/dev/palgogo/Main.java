@@ -1,6 +1,7 @@
 package dev.palgogo;
 
 import dev.palgogo.chapter10.CornerDetection;
+import dev.palgogo.labs.First;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -74,7 +75,7 @@ public class Main extends Application {
 
 
     private void onFirstLabClickButton(ActionEvent event) {
-
+        new First().findAndDrawContour();
     }
 
     private void onSecondLabClickButton(ActionEvent event) {
