@@ -13,6 +13,7 @@ public class Seventh {
 
 
     private static final String UPPERBODY = "/haarcascades/haarcascade_upperbody.xml";
+    private static final String FULL_BODY = "/haarcascades/haarcascade_fullbody.xml";
     private static final String PROFILEFACE = "/haarcascades/haarcascade_profileface.xml";
     private static final String FRONTAL_FACE = "/haarcascades/haarcascade_frontalface_alt2.xml";
     private static final String PEOPLES = "/haarcascades/case.xml";
@@ -22,10 +23,10 @@ public class Seventh {
         final Path resources = pathToResources.toAbsolutePath();
 
         CascadeClassifier face_detector = new CascadeClassifier();
-        final boolean isLoadCascade = face_detector.load(resources + PEOPLES);
+        final boolean isLoadCascade = face_detector.load(resources + FULL_BODY);
 
         if (!isLoadCascade) {
-            System.out.println("Can't load classificator " + PEOPLES);
+            System.out.println("Can't load classificator " + FULL_BODY);
             return;
         }
 
@@ -41,7 +42,7 @@ public class Seventh {
         Imgproc.resize(frame, frame, new Size(), 0.6, 0.6, Imgproc.ADAPTIVE_THRESH_MEAN_C);
 
         //TODO should work with another parameters
-        face_detector.detectMultiScale(frame, faces, 1.15, 2, 0);
+        face_detector.detectMultiScale(frame, faces, 1.09, 1, 0);
         for (Rect r : faces.toList()) {
             Imgproc.rectangle(frame, new Point(r.x, r.y),
                     new Point(r.x + r.width, r.y + r.height),
