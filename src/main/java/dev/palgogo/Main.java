@@ -2,6 +2,7 @@ package dev.palgogo;
 
 import dev.palgogo.chapter10.CornerDetection;
 import dev.palgogo.labs.First;
+import dev.palgogo.labs.Fourth;
 import dev.palgogo.labs.Third;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -16,6 +17,11 @@ import org.opencv.core.Core;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * VM arguments
+ * <p>
+ * --module-path D:\Programms\javafx\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml
+ */
 public class Main extends Application {
     static {
         System.load(Paths.get(".").toAbsolutePath().normalize().toString() + "\\libs\\opencv_java420.dll");
@@ -88,7 +94,7 @@ public class Main extends Application {
     }
 
     private void onFourthLabClickButton(ActionEvent event) {
-
+        new Fourth().facesOnVideo();
     }
 
     private void onFifthLabClickButton(ActionEvent event) {
