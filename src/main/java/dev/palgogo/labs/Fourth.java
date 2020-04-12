@@ -10,7 +10,6 @@ import org.opencv.videoio.Videoio;
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,19 +33,7 @@ public class Fourth {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setLocationRelativeTo(null);
 
-        window.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                isRun = false;
-                if (isEnd) {
-                    window.dispose();
-                    System.exit(0);
 
-                } else {
-                    System.out.println("ESC before");
-                }
-            }
-        });
 
         window.addKeyListener(new KeyAdapter() {
             @Override
@@ -61,10 +48,7 @@ public class Fourth {
         window.setContentPane(label);
         window.setVisible(true);
 
-        if (!isLoadCascade) {
-            System.out.println("Can't load classificator " + FRONTALFACE_CASCADE);
-            return;
-        }
+
         final MatOfRect faces = new MatOfRect();
 
         VideoCapture camera = new VideoCapture(0);

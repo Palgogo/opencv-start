@@ -3,6 +3,7 @@ package dev.palgogo;
 import dev.palgogo.chapter10.CornerDetection;
 import dev.palgogo.labs.First;
 import dev.palgogo.labs.Fourth;
+import dev.palgogo.labs.Seventh;
 import dev.palgogo.labs.Third;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -106,7 +107,7 @@ public class Main extends Application {
     }
 
     private void onSeventhLabClickButton(ActionEvent event) {
-
+        new Seventh().detectPeopleOnImage();
     }
 
     private void onEighthLabClickButton(ActionEvent event) {
