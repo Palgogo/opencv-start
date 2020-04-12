@@ -100,12 +100,10 @@ public class Fourth {
                         label.repaint();
                         window.pack();
                     }
-/*                    CvUtils.showImage(frame,"image");
-                    frame.release();*/
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(33);
                     } catch (InterruptedException ex) {
-
+                        ex.printStackTrace();
                     }
                 } else {
                     break;
